@@ -5,7 +5,8 @@ exports.uploadPhoto = async (req, res) => {
   try {
     const { userId } = req.body;
     const imageUrl = req.file.path;
-
+    console.log("userId: "+userId)
+    console.log("imageUrl: "+imageUrl)
     const newPhoto = new Photo({ userId, imageUrl });
     await newPhoto.save();
 
