@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const Photo = require("../models/Photo");
 
 // Subir foto
@@ -32,9 +34,23 @@ exports.getUserPhotos = async (req, res) => {
 exports.deletePhoto = async (req, res) => {
   try {
     const { id } = req.params;
-    await Photo.findByIdAndDelete(id);
 
-    res.status(200).json({ message: "Foto eliminada con éxito" });
+    const photo = await Photo.findById(id);
+    if (!photo) {
+      return res.status(404).json({ error: "Foto no encontrada" });
+    }
+
+    const filePath = path.join(__dirname, "../", photo.imageUrl);
+    fs.unlink(filePath, async (err) => {
+      if (err) {
+        console.error("Error al eliminar el archivo:", err);
+        return res.status(500).json({ error: "Error al eliminar la imagen del servidor" });
+      }
+
+      await Photo.findByIdAndDelete(id);
+
+      res.status(200).json({ message: "Foto eliminada con éxito" });
+    });
   } catch (error) {
     res.status(500).json({ error: "Error al eliminar la foto" });
   }
