@@ -30,7 +30,7 @@ exports.getUserPhotos = async (req, res) => {
   }
 };
 
-// Eliminar una foto
+
 exports.deletePhoto = async (req, res) => {
   try {
     const { id } = req.params;
@@ -39,8 +39,12 @@ exports.deletePhoto = async (req, res) => {
     if (!photo) {
       return res.status(404).json({ error: "Foto no encontrada" });
     }
-
-    const filePath = path.join(__dirname, "../", photo.imageUrl);
+    const isTestEnv = process.env.NODE_ENV === "test";
+    
+    const filePath = (isTestEnv)
+                ? path.join(__dirname, "../../", photo.imageUrl)
+                : path.join(__dirname, "../", photo.imageUrl);
+                
     fs.unlink(filePath, async (err) => {
       if (err) {
         console.error("Error al eliminar el archivo:", err);
