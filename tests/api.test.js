@@ -47,7 +47,7 @@ test("DELETE /api/photos/:id - Debería eliminar la foto correctamente", async (
     expect(uploadedPhotoId).toBeDefined(); 
     console.log(`Intentando eliminar la foto con ID: ${uploadedPhotoId}`);
     
-    const res = await request(app).delete(`/api/pho/${uploadedPhotoId}`);
+    const res = await request(app).delete(`/api/photos/${uploadedPhotoId}`);
 
     console.log("Respuesta DELETE /api/photos/:id:", res.body);
 
