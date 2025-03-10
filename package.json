@@ -4,7 +4,8 @@
   "main": "src/server.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --runInBand",
-    "start": "cd src && nodemon server"
+    "start": "cd src && nodemon server",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
   }
