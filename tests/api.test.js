@@ -38,7 +38,7 @@ test("GET /api/photos/:userId - Debería obtener todas las fotos del usuario", a
 
     console.log("Respuesta GET /api/photos/:userId:", res.body);
 
-    expect(res.statusCode).toBe(500);
+    expect(res.statusCode).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
     expect(res.body.length).toBeGreaterThan(0); 
 });
