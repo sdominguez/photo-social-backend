@@ -9,6 +9,7 @@ app.use(cors());
 
 
 app.use("/uploads", express.static("uploads")); 
+app.use("/docs/test-coverage", express.static("../coverage/lcov-report"))
 
 mongoose
   .connect(process.env.MONGO_URI)
