@@ -4,7 +4,7 @@
   "main": "src/server.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --runInBand",
-    "start": "cd src && nodemon server",
+    "start": "cd src && node server",
     "prepare": "husky"
   },
   "keywords": [],
