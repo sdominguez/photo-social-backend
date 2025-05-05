@@ -25,7 +25,8 @@ pipeline {
 
         stage('Ejecutar pruebas') {
             steps {
-                sh 'docker compose exec -T photo_social_backend npm test'
+                //sh 'docker compose exec -T photo_social_backend npm test'
+                sh 'docker compose run --rm photo_social_backend npm test'
             }
         }
 
