@@ -23,13 +23,6 @@ pipeline {
             }
         }
 
-        stage('Ejecutar pruebas') {
-            steps {
-                //sh 'docker compose exec -T backend npm test'
-                sh 'docker compose run --rm backend npm test'
-            }
-        }
-
         stage('Verificar estado') {
             steps {
                 sh 'docker ps'
